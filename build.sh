@@ -14,10 +14,11 @@ OUTPUT_DIR="$1"
 
 # Hacky debug if .git dir present.
 set -x
-pwd
 ls -la /
+pwd
 ls -la ./
-ls -la .git/
+git rev-parse --is-inside-work-tree || echo "Not inside worktree"
+
 
 if [ -z "${SRC_DIR+0}" ]; then
   if [ -z "${INPUT_SRC_DIR+0}" ]; then
@@ -32,9 +33,9 @@ else
 fi
 
 pwd
-ls -la /
 ls -la ./
-ls -la .git/
+ls -la $(git rev-parse --show-toplevel)/.git
+git rev-parse --is-inside-work-tree || echo "Not inside worktree"
 
 info "Installing additional linkers"
 case ${RUSTTARGET} in
