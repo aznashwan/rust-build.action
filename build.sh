@@ -34,8 +34,8 @@ fi
 
 pwd
 ls -la ./
-ls -la $(git rev-parse --show-toplevel)/.git
 git rev-parse --is-inside-work-tree || echo "Not inside worktree"
+ls -la $(git rev-parse --show-toplevel)/.git
 
 info "Installing additional linkers"
 case ${RUSTTARGET} in
