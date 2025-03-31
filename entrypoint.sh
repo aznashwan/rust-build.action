@@ -61,6 +61,9 @@ rmdir "$PROJECT_ROOT"
 ln -s "$GITHUB_WORKSPACE" "$PROJECT_ROOT"
 cd "$PROJECT_ROOT"
 
+# Avoid 'dubious ownership' errors from some `git` subcommands:
+git config --global safe.directory "$GITHUB_WORKSPACE"
+
 # Run pre-build script
 if [ -f "$PRE_BUILD" ]; then
   "./$PRE_BUILD"
