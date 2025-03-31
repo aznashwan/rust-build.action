@@ -66,10 +66,11 @@ if [ -f "$PRE_BUILD" ]; then
   "./$PRE_BUILD"
 fi
 # Build
-if ! FILE_LIST=$(/build.sh "$OUTPUT_DIR"); then
-  error "Build failed"
-  exit 1
-fi
+/build.sh "$OUTPUT_DIR"
+# if ! FILE_LIST=$(/build.sh "$OUTPUT_DIR"); then
+#   error "Build failed"
+#   exit 1
+# fi
 # Run post-build script
 if [ -f "$POST_BUILD" ]; then
   "./$POST_BUILD"

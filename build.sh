@@ -12,6 +12,12 @@ crash() {
 trap 'crash' ERR
 OUTPUT_DIR="$1"
 
+# Hacky debug if .git dir present.
+set -x
+pwd
+ls -la ./
+ls -la .git/
+
 if [ -z "${SRC_DIR+0}" ]; then
   if [ -z "${INPUT_SRC_DIR+0}" ]; then
     info "No SRC_DIR is set, using repo base dir"
